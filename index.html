@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Level II – Airbrush, Bridal, Studio, Fashion | MUD Studio Italia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f8f6f2;
+    --orange: #FF8B59;
+    --orange-dark: #e06d3a;
+    --grey: #888;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.96), transparent);
+  }
+  nav img { height: 36px; }
+  nav a.nav-cta {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  nav a.nav-cta:hover { opacity: 1; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://makeupdesignory.it/static/c73b447909edb1ce3341336e1fc2bbc7/59954/airbrush-compressed.jpg');
+    background-size: cover;
+    background-position: center 25%;
+    filter: brightness(0.42);
+    animation: slowzoom 14s ease-out forwards;
+  }
+  @keyframes slowzoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.0); }
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px 80px;
+    max-width: 820px;
+    animation: fadeup 1.1s ease-out both;
+  }
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    border: 1px solid var(--orange);
+    padding: 6px 16px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 7vw, 86px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .hero h1 em { font-style: italic; color: var(--orange); }
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.75;
+    opacity: 0.72;
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--black);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 18px 40px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(248,246,242,0.35);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 17px 36px;
+    margin-left: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--white); transform: translateY(-2px); }
+
+  /* STRIP */
+  .strip {
+    background: var(--orange);
+    padding: 15px 48px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    color: var(--black);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .strip-item::before { content: '✦'; font-size: 9px; }
+
+  /* SECTION BASE */
+  section { padding: 96px 48px; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 4.5vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  h2 em { font-style: italic; color: var(--orange); }
+
+  /* FOR WHO */
+  .forwho { background: var(--white); color: var(--black); }
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .forwho-img { position: relative; }
+  .forwho-img img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .forwho-img-tag {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    background: var(--orange);
+    color: var(--black);
+    padding: 22px 26px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .forwho-content h2 { color: var(--black); }
+  .forwho-content p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: rgba(10,10,10,0.7);
+    margin-bottom: 18px;
+  }
+  .check-list { list-style: none; margin: 28px 0; }
+  .check-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.65;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(10,10,10,0.07);
+    color: var(--black);
+  }
+  .check-list li::before {
+    content: '→';
+    color: var(--orange);
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* MODULES */
+  .modules { background: var(--black); padding: 96px 48px; }
+  .modules-header { max-width: 1200px; margin: 0 auto 56px; }
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .module-card {
+    background: #0f0f0f;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .module-card:hover { background: #151515; }
+  .module-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: brightness(0.6);
+    transition: filter 0.4s, transform 0.5s;
+  }
+  .module-card:hover .module-img {
+    filter: brightness(0.75);
+    transform: scale(1.03);
+  }
+  .module-body { padding: 36px 40px 40px; }
+  .module-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: rgba(255,139,89,0.1);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .module-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .module-desc {
+    font-size: 13px;
+    line-height: 1.85;
+    color: rgba(248,246,242,0.55);
+  }
+  .module-hours {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 1px solid rgba(255,139,89,0.3);
+    padding: 5px 14px;
+  }
+
+  /* NUMBERS */
+  .numbers { background: var(--orange); color: var(--black); padding: 72px 48px; }
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .number-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 72px);
+    font-weight: 300;
+    line-height: 1;
+  }
+  .number-item p {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 8px;
+    opacity: 0.72;
+  }
+
+  /* INCLUDES */
+  .includes { background: #0d0d0d; }
+  .includes-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .includes-list { list-style: none; }
+  .includes-list li {
+    display: flex;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(248,246,242,0.07);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .includes-list li .icon { color: var(--orange); font-size: 16px; flex-shrink: 0; }
+  .includes-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    margin-bottom: 18px;
+  }
+  .includes-right h3 em { font-style: italic; color: var(--orange); }
+  .includes-right > p {
+    font-size: 14px;
+    line-height: 1.85;
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+  .freq-box {
+    background: #181818;
+    padding: 24px 28px;
+    margin-top: 10px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .freq-box:hover { border-color: var(--orange); }
+  .freq-box h4 {
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .freq-box p { font-size: 13px; line-height: 1.8; opacity: 0.72; }
+
+  /* PARTNERS */
+  .partners { background: var(--white); padding: 56px 48px; }
+  .partners p {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .partners-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .partners-logos img {
+    height: 28px;
+    filter: grayscale(100%) opacity(0.45);
+    transition: filter 0.25s;
+  }
+  .partners-logos img:hover { filter: grayscale(0%) opacity(1); }
+
+  /* FORM SECTION */
+  .form-section {
+    background: var(--black);
+    padding: 100px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-section::after {
+    content: 'II';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 380px;
+    font-weight: 300;
+    color: rgba(255,139,89,0.035);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .form-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+    position: relative;
+    z-index: 1;
+  }
+  .form-left h2 { margin-bottom: 14px; }
+  .form-left > p {
+    font-size: 15px;
+    line-height: 1.8;
+    opacity: 0.62;
+    margin-bottom: 40px;
+  }
+  .form-testimonial {
+    border-left: 2px solid var(--orange);
+    padding-left: 22px;
+  }
+  .form-testimonial blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.65;
+    opacity: 0.78;
+    margin-bottom: 10px;
+  }
+  .form-testimonial cite {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  /* FORM BOX */
+  .form-box {
+    background: #0f0f0f;
+    padding: 48px;
+    border-top: 2px solid var(--orange);
+  }
+  .form-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .form-box .form-sub {
+    font-size: 12px;
+    opacity: 0.45;
+    margin-bottom: 32px;
+    letter-spacing: 0.06em;
+  }
+
+  /* FORM FIELDS */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .field-group { margin-bottom: 12px; }
+  .field-group label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(248,246,242,0.45);
+    margin-bottom: 7px;
+  }
+  .field-group input {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid rgba(248,246,242,0.1);
+    color: var(--white);
+    padding: 13px 15px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .field-group input:focus { border-color: var(--orange); }
+  .field-group input::placeholder { color: rgba(248,246,242,0.18); }
+  .privacy-note {
+    font-size: 11px;
+    color: rgba(248,246,242,0.28);
+    line-height: 1.6;
+    margin: 16px 0 20px;
+  }
+  .privacy-note a { color: rgba(248,246,242,0.45); }
+  .btn-submit {
+    width: 100%;
+    background: var(--orange);
+    color: var(--black);
+    border: none;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-submit:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  /* SUCCESS STATE */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 48px 20px;
+  }
+  .form-success .tick {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 20px;
+    color: var(--orange);
+  }
+  .form-success h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+  .form-success p { font-size: 14px; opacity: 0.55; }
+
+  /* FOOTER */
+  footer {
+    background: #060606;
+    padding: 36px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(248,246,242,0.05);
+  }
+  footer img { height: 26px; opacity: 0.55; }
+  footer p { font-size: 11px; opacity: 0.3; letter-spacing: 0.04em; }
+  footer .footer-links a {
+    color: var(--white);
+    opacity: 0.38;
+    text-decoration: none;
+    font-size: 11px;
+    margin-left: 22px;
+    transition: opacity 0.2s;
+  }
+  footer .footer-links a:hover { opacity: 0.75; }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    section { padding: 64px 20px; }
+    .modules { padding: 64px 20px; }
+    .numbers { padding: 56px 20px; }
+    .partners { padding: 48px 20px; }
+    .form-section { padding: 72px 20px; }
+
+    .hero-content { padding: 0 20px 56px; }
+    .btn-ghost { display: none; }
+
+    /* STRIP scrollable */
+    .strip { padding: 14px 20px; gap: 20px; }
+
+    /* FOR WHO: foto full width sopra il testo */
+    .forwho { padding: 0 0 64px; }
+    .forwho-grid { grid-template-columns: 1fr; gap: 0; }
+    .forwho-img img {
+      height: 70vw;
+      max-height: 420px;
+      width: 100%;
+    }
+    .forwho-img-tag { right: 16px; bottom: -16px; font-size: 24px; padding: 16px 20px; }
+    .forwho-content { padding: 48px 20px 0; }
+
+    /* MODULES: 1 col, foto visibile */
+    .modules-grid { grid-template-columns: 1fr; gap: 3px; }
+    .module-img { height: 180px; }
+    .module-body { padding: 28px 24px 32px; }
+
+    /* NUMBERS: 2 col */
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    /* INCLUDES: 1 col */
+    .includes-inner { grid-template-columns: 1fr; gap: 48px; }
+
+    /* PARTNERS */
+    .partners-logos { gap: 24px; }
+    .partners-logos img { height: 22px; }
+
+    /* FORM: 1 col */
+    .form-inner { grid-template-columns: 1fr; gap: 48px; }
+    .form-section::after { display: none; }
+    .form-box { padding: 32px 20px; }
+    .field-row { grid-template-columns: 1fr; gap: 0; }
+
+    /* FOOTER */
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 20px; }
+    footer .footer-links { margin-top: 4px; }
+    footer .footer-links a { margin: 0 10px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 38px; }
+    .hero-sub { font-size: 14px; }
+    .btn-primary { width: 100%; text-align: center; }
+    .number-item h3 { font-size: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://makeupdesignory.it">
+    <img src="https://makeupdesignory.it/static/logo-w-0a1e3792d1059962d77fb7e9d0acd2bb.png" alt="MUD Studio Italia">
+  </a>
+  <a href="#form" class="nav-cta">Richiedi informazioni</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Level II · MUD Studio Italia</span>
+    <h1>Sei già una MUA.<br>Ora <em>specializzati.</em></h1>
+    <p class="hero-sub">Airbrush, Bridal, Studio e Fashion: quattro moduli professionali per espandere il tuo portfolio, accedere a nuovi mercati e aumentare il tuo valore sul campo.</p>
+    <a href="#form" class="btn-primary">Richiedi informazioni</a>
+    <a href="#moduli" class="btn-ghost">Scopri i moduli</a>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">126 ore di formazione</div>
+  <div class="strip-item">4 moduli specialistici</div>
+  <div class="strip-item">Kit professionale incluso (valore €2.150)</div>
+  <div class="strip-item">Certificato internazionale MUD</div>
+  <div class="strip-item">Milano & Roma</div>
+  <div class="strip-item">Italiano & Inglese</div>
+</div>
+
+<!-- FOR WHO -->
+<section class="forwho">
+  <div class="forwho-grid">
+    <div class="forwho-img">
+      <img src="https://makeupdesignory.it/static/c73b447909edb1ce3341336e1fc2bbc7/59954/airbrush-compressed.jpg" alt="MUA professionista MUD">
+      <div class="forwho-img-tag">Level<br>II</div>
+    </div>
+    <div class="forwho-content">
+      <p class="section-label">Per chi è questo corso</p>
+      <h2>Già lavori.<br>Vuoi <em>crescere.</em></h2>
+      <p>Il Level II non è un corso per chi parte da zero. È pensato per make up artist che hanno già una base — che lavorino come freelance, nel bridal, in negozio o nel beauty — e vogliono aggiungere competenze avanzate al proprio bagaglio professionale.</p>
+      <p>Che tu abbia già una certificazione MUD Level I o che arrivi da un'altra formazione, questo percorso ti apre porte concrete: airbrush per sfilate e shooting, bridal certificato, studio e fashion per set TV e riviste.</p>
+      <ul class="check-list">
+        <li>Sei una MUA freelance e vuoi offrire più servizi</li>
+        <li>Vuoi entrare nel mercato bridal con una competenza certificata</li>
+        <li>Ti interessa lavorare su set fotografici o in TV</li>
+        <li>Vuoi padroneggiare l'airbrush per allargare la clientela</li>
+        <li>Cerchi un upgrade riconosciuto internazionalmente</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules" id="moduli">
+  <div class="modules-header">
+    <p class="section-label">Il programma</p>
+    <h2>Quattro specializzazioni.<br><em>Un solo percorso.</em></h2>
+  </div>
+  <div class="modules-grid">
+
+    <div class="module-card">
+      <img class="module-img"
+        src="https://makeupdesignory.it/static/c73b447909edb1ce3341336e1fc2bbc7/59954/airbrush-compressed.jpg"
+        alt="Airbrush">
+      <div class="module-body">
+        <div class="module-num">01</div>
+        <div class="module-title">Airbrush</div>
+        <p class="module-desc">La tecnica americana per eccellenza. Risultati a lunga tenuta, sfumature impeccabili, coprenza estrema con leggerezza assoluta. Fondamentale per matrimoni, set e sfilate. Imparerai utilizzo, manutenzione e tecnica completa dell'aerografo.</p>
+        <span class="module-hours">35h</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <img class="module-img"
+        src="https://makeupdesignory.it/static/4e4f158b2dc700270df2c64e9dc89117/59954/beauty-correttivo-compressed.jpg"
+        alt="Bridal">
+      <div class="module-body">
+        <div class="module-num">02</div>
+        <div class="module-title">Bridal</div>
+        <p class="module-desc">Non solo il trucco: il modulo bridal ti insegna la consulenza professionale, il piano di lavoro, il pricing, la comunicazione con la sposa. Face chart, look test, simulazione completa. Come distinguerti nel mercato matrimoni.</p>
+        <span class="module-hours">21h</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <img class="module-img"
+        src="https://makeupdesignory.it/static/776e9b86333e6f591a02bee1f500cc08/7aa29/newsletter-compressed.jpg"
+        alt="Studio Make Up">
+      <div class="module-body">
+        <div class="module-num">03</div>
+        <div class="module-title">Studio Make Up</div>
+        <p class="module-desc">Trucco per telecamere HD, produzioni TV e set cinematografici. Come adattare il make up ai diversi tipi di luce. Come caratterizzare un personaggio. Come lavorare con registi e direttori della fotografia.</p>
+        <span class="module-hours">35h</span>
+      </div>
+    </div>
+
+    <div class="module-card">
+      <img class="module-img"
+        src="https://makeupdesignory.it/static/0783861c11e43b953881e5de448c5d8c/85249/mosa-1.jpg"
+        alt="High Fashion">
+      <div class="module-body">
+        <div class="module-num">04</div>
+        <div class="module-title">High Fashion</div>
+        <p class="module-desc">Trend, moodboard, shooting professionale. Impari a lavorare su un set fotografico e in sfilata. Creatività strutturata: dall'ispirazione alla realizzazione del look, con critica di gruppo e analisi dei risultati.</p>
+        <span class="module-hours">35h</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-grid">
+    <div class="number-item"><h3>126</h3><p>ore di formazione</p></div>
+    <div class="number-item"><h3>12</h3><p>studenti max per classe</p></div>
+    <div class="number-item"><h3>60k+</h3><p>MUA certificati nel mondo</p></div>
+    <div class="number-item"><h3>25+</h3><p>anni di storia MUD</p></div>
+  </div>
+</div>
+
+<!-- INCLUDES -->
+<section class="includes">
+  <div class="includes-inner">
+    <div>
+      <p class="section-label">Cosa include</p>
+      <h2>Tutto quello<br>che <em>ti serve.</em></h2>
+      <ul class="includes-list">
+        <li><span class="icon">◆</span><span>Kit completo di prodotti professionali (valore €2.150)</span></li>
+        <li><span class="icon">◆</span><span>Aerografo e tutto il materiale per l'airbrush</span></li>
+        <li><span class="icon">◆</span><span>Libro di testo e di esercizi</span></li>
+        <li><span class="icon">◆</span><span>Esami finali scritto e pratico</span></li>
+        <li><span class="icon">◆</span><span>Certificato internazionale MUD</span></li>
+        <li><span class="icon">◆</span><span>Card MUD: 40% di sconto su prodotti MUD e altri brand</span></li>
+        <li><span class="icon">◆</span><span>Accesso al gruppo privato MUD per opportunità di lavoro</span></li>
+        <li><span class="icon">◆</span><span>IVA inclusa</span></li>
+      </ul>
+    </div>
+    <div class="includes-right">
+      <h3>Frequenta come<br><em>vuoi tu.</em></h3>
+      <p>Il Level II si adatta alla tua vita professionale. Scegli la formula che si integra meglio con il tuo calendario di lavoro.</p>
+      <div class="freq-box">
+        <h4>Formula Full Time</h4>
+        <p>18 giorni · lunedì–venerdì · 10:00–18:00<br>Completi in poche settimane intensive.</p>
+      </div>
+      <div class="freq-box">
+        <h4>Formula Weekend</h4>
+        <p>18 settimane · solo sabato o domenica · 10:30–18:30<br>Continui a lavorare e ti formi nel weekend.</p>
+      </div>
+      <div class="freq-box">
+        <h4>Disponibile in</h4>
+        <p>🇮🇹 Italiano &nbsp;·&nbsp; 🇬🇧 Inglese<br>📍 Milano · Via Soncino 1 &nbsp;·&nbsp; 📍 Roma · Viale Giotto 3</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+  <p>I nostri partner</p>
+  <div class="partners-logos">
+    <img src="https://a.storyblok.com/f/184608/316x210/21a8e1042b/logo-luis-vit.png" alt="Louis Vuitton">
+    <img src="https://a.storyblok.com/f/184608/316x210/f9a18070e0/logo-ied.png" alt="IED">
+    <img src="https://a.storyblok.com/f/184608/314x210/da70da4176/logo-oreal.png" alt="L'Oreal">
+    <img src="https://a.storyblok.com/f/184608/316x210/811a87fed8/logo-taodue.png" alt="Taodue">
+    <img src="https://a.storyblok.com/f/184608/315x258/0e0b6ab67e/logo-marangoni.png" alt="Marangoni">
+  </div>
+</div>
+
+<!-- FORM AC NASCOSTO — ufficiale, invisibile, viene compilato via JS -->
+<div style="position:absolute;left:-9999px;top:-9999px;visibility:hidden;" aria-hidden="true">
+  <form id="ac-hidden-form" method="POST" action="https://b-effect.activehosted.com/proc.php" target="ac-hidden-iframe">
+    <input type="hidden" name="u" value="17">
+    <input type="hidden" name="f" value="17">
+    <input type="hidden" name="s" value="">
+    <input type="hidden" name="c" value="0">
+    <input type="hidden" name="m" value="0">
+    <input type="hidden" name="act" value="sub">
+    <input type="hidden" name="v" value="2">
+    <input type="hidden" name="or" id="ac-or" value="">
+    <input type="text"   name="firstname" id="ac-firstname" value="">
+    <input type="text"   name="lastname"  id="ac-lastname"  value="">
+    <input type="email"  name="email"     id="ac-email"     value="">
+    <input type="tel"    name="phone"     id="ac-phone"     value="">
+    <button type="submit" id="ac-submit-btn">Submit</button>
+  </form>
+  <iframe name="ac-hidden-iframe" id="ac-hidden-iframe" style="display:none;"></iframe>
+</div>
+
+<!-- FORM -->
+<section class="form-section" id="form">
+  <div class="form-inner">
+    <div class="form-left">
+      <p class="section-label">Prossimo passo</p>
+      <h2>Parliamo del<br>tuo <em>percorso.</em></h2>
+      <p>Compilando il form una nostra consulente ti contatterà per capire il tuo background, rispondere alle tue domande e aiutarti a scegliere il calendario più adatto. Nessun impegno, solo informazioni.</p>
+      <div class="form-testimonial">
+        <blockquote>"È stata una delle esperienze più importanti che abbia fatto, sia a livello professionale che umano."</blockquote>
+        <cite>Alina — Milano, ex studentessa MUD</cite>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <h3>Richiedi informazioni</h3>
+      <p class="form-sub">Risposta entro 24 ore lavorative</p>
+
+      <div id="mud-form">
+        <div class="field-row">
+          <div class="field-group">
+            <label for="f-nome">Nome</label>
+            <input type="text" id="f-nome" placeholder="Il tuo nome" autocomplete="given-name">
+          </div>
+          <div class="field-group">
+            <label for="f-cognome">Cognome</label>
+            <input type="text" id="f-cognome" placeholder="Il tuo cognome" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="field-group">
+          <label for="f-email">Email *</label>
+          <input type="email" id="f-email" placeholder="la-tua@email.com" autocomplete="email">
+        </div>
+        <div class="field-group">
+          <label for="f-tel">Telefono</label>
+          <input type="tel" id="f-tel" placeholder="+39 333 000 0000" autocomplete="tel">
+        </div>
+        <p class="privacy-note">
+          Inviando questo modulo acconsenti al trattamento dei tuoi dati personali da parte di MUD Studio Italia per finalità di marketing.
+          Consulta la nostra <a href="https://makeupdesignory.it/privacy" target="_blank">Privacy Policy</a>.
+        </p>
+        <button class="btn-submit" id="btn-invia">Invia richiesta</button>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <div class="tick">✓</div>
+        <h4>Richiesta inviata!</h4>
+        <p>Ti contatteremo entro 24 ore lavorative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://makeupdesignory.it/static/logo-w-0a1e3792d1059962d77fb7e9d0acd2bb.png" alt="MUD Studio Italia">
+  <p>© MUD Studio Italia · Butterfly Effect Srl · Via Soncino 1, 20123 Milano</p>
+  <div class="footer-links">
+    <a href="https://makeupdesignory.it/privacy">Privacy</a>
+    <a href="https://makeupdesignory.it">Sito principale</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('btn-invia').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  var email = document.getElementById('f-email').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('f-email').style.borderColor = '#FF8B59';
+    document.getElementById('f-email').focus();
+    return;
+  }
+
+  // Copia valori nel form AC nascosto
+  document.getElementById('ac-firstname').value = document.getElementById('f-nome').value.trim();
+  document.getElementById('ac-lastname').value  = document.getElementById('f-cognome').value.trim();
+  document.getElementById('ac-email').value     = email;
+  document.getElementById('ac-phone').value     = document.getElementById('f-tel').value.trim();
+  document.getElementById('ac-or').value        = window.location.href;
+
+  // Submit nel iframe nascosto — AC riceve tutto ufficialmente
+  document.getElementById('ac-hidden-form').submit();
+
+  // Mostra successo dopo breve delay (tempo submit)
+  setTimeout(function() {
+    document.getElementById('mud-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }, 800);
+});
+</script>
+
+</body>
+</html>
